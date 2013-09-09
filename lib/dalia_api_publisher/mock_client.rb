@@ -28,29 +28,29 @@ class Dalia::Api::Publisher::MockClient < Dalia::Api::Publisher::Client
     )
   end
 
-  def make_request_send_completion(query)
-    log.debug "make_request_send_completion FAKE"
+  def make_request_send_survey(query)
+    log.debug "make_request_send_survey FAKE"
 
     JSON.parse(
-      File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/send_completion.json"),
+      File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/send_survey.json"),
       :symbolize_names => true
     )
   end
 
-  def make_request_send_prequalification_success(query)
-    log.debug "make_request_send_prequalification_fail FAKE"
+  def make_request_fetch_completions(query)
+    log.debug "make_request_fetch_completions FAKE"
 
     JSON.parse(
-      File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/send_prequalification_success.json"),
+      File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_completions.json"),
       :symbolize_names => true
     )
   end
 
-  def make_request_send_prequalification_fail(query)
-    log.debug "make_request_send_prequalification_fail FAKE"
+  def make_request_fetch_completion(query)
+    log.debug "make_request_fetch_completion FAKE"
 
     JSON.parse(
-      File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/send_prequalification_fail.json"),
+      File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_completion.json"),
       :symbolize_names => true
     )
   end

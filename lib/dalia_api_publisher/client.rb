@@ -12,51 +12,39 @@ class Dalia::Api::Publisher::Client
     @log = Dalia::Api::Publisher::Log.new(options[:debug_mode])
 
     log.log_options(options)
-
-    check_required_options(options, :application_key, :secret_key)
   end
 
   def fetch_surveys(opts)
-    check_required_options(opts, :device_id, :device_id_kind)
-
-    query = make_query(opts)
-    response = make_request_fetch_surveys(query)
+    check_required_options(opts, :account_id)
+    response = make_request_fetch_surveys(opts)
 
     response
   end
 
   def fetch_survey(opts)
-    check_required_options(opts, :survey_id, :device_id, :device_id_kind)
-
-    query = make_query(opts)
-    response = make_request_fetch_survey(query)
+    check_required_options(opts, :account_id, :survey_id)
+    response = make_request_fetch_survey(opts)
 
     response
   end
 
-  def send_completion(opts)
-    check_required_options(opts, :survey_id, :completion, :device_id, :device_id_kind)
-
-    query = make_query(opts)
-    response = make_request_send_completion(query)
+  def send_survey(opts)
+    check_required_options(opts, :account_id, :data)
+    response = make_request_send_survey(opts)
 
     response
   end
 
-  def send_prequalification_success(opts)
-    check_required_options(opts, :survey_id, :device_id, :device_id_kind)
-
-    query = make_query(opts)
-    response = make_request_send_prequalification_success(query)
+  def fetch_completions(opts)
+    check_required_options(opts, :account_id, :survey_id)
+    response = make_request_fetch_completions(opts)
 
     response
   end
 
-  def send_prequalification_fail(opts)
-    check_required_options(opts, :survey_id, :device_id, :device_id_kind)
-
-    query = make_query(opts)
-    response = make_request_send_prequalification_fail(query)
+  def fetch_completion(opts)
+    check_required_options(opts, :account_id, :survey_id, :completion_id)
+    response = make_request_fetch_completion(opts)
 
     response
   end
@@ -72,34 +60,24 @@ private
     raise Dalia::Api::Publisher::Exception, errors.join(", ") if !errors.empty?
   end
 
-  def make_query(opts)
-    query =
-      opts.merge(
-        :access_key => options[:access_key],
-        :application_key => options[:application_key]
-      )
-
-    query
-  end
-
   def make_request_fetch_surveys(query)
-    make_request("/api/surveys", query)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys", query)
   end
 
   def make_request_fetch_survey(query)
-    make_request("/api/surveys/#{query[:survey_id]}", query)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query)
   end
 
-  def make_request_send_completion(query)
-    make_request("/api/surveys/#{query[:survey_id]}/completions", query, :method => :post)
+  def make_request_send_survey(query)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/", query, :method => :post)
   end
 
-  def make_request_send_prequalification_success(query)
-    make_request("/api/surveys/#{query[:survey_id]}/prequalification_success", query, :method => :post)
+  def make_request_fetch_completions(query)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions", query)
   end
 
-  def make_request_send_prequalification_fail(query)
-    make_request("/api/surveys/#{query[:survey_id]}/prequalification_fail", query, :method => :post)
+  def make_request_fetch_completion(query)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
   end
 
   def make_request(api_path, query, opts = {})

@@ -1,0 +1,10 @@
+{
+  "completion": {
+    "id": "C001",
+    "survey_id": "S002",
+    "state": "completed",
+    "prequalification_fail_at": null,
+    "completed_at": "2013-10-01 10:11:12",
+    "data": {}
+  }
+}

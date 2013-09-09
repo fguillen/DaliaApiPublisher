@@ -1,0 +1,13 @@
+{
+  "survey": {
+    "id": "001",
+    "title": "The survey 001",
+    "tagline": "This is an explanation of the survey",
+    "prequalification": "This survey require you to be a sport man older than 40",
+    "kind": "mr_survey",
+    "credits": {
+      "kind": "stars",
+      "amount": "280"
+    }
+  }
+}

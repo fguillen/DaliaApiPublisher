@@ -3,10 +3,7 @@ require_relative "test_helper"
 class ClientTest < MiniTest::Unit::TestCase
   def setup
     FakeWeb.allow_net_connect = false
-    @client_opts = {
-      :application_key => "APPLICATION_KEY",
-      :secret_key => "SECRET_KEY"
-    }
+    @client_opts = {}
 
     @client = Dalia::Api::Publisher::Client.new @client_opts
   end
@@ -14,12 +11,12 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_fetch_surveys
     FakeWeb.register_uri(
       :get,
-      "http://daliaresearch.com/api/surveys?device_id=DEVICE_ID&device_id_kind=DEVICE_ID_KIND&access_key=&application_key=APPLICATION_KEY",
+      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys",
       :body => File.read("#{FIXTURES}/fake_responses/fetch_surveys.json"),
       :status => ["200", "Success"]
     )
 
-    response = @client.fetch_surveys(:device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND")
+    response = @client.fetch_surveys(:account_id => "PUBLISHER_ACCOUNT_ID")
 
     assert_equal(6, response[:surveys].length)
   end
@@ -27,56 +24,53 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_fetch_survey
     FakeWeb.register_uri(
       :get,
-      "http://daliaresearch.com/api/surveys/SURVEY_ID?survey_id=SURVEY_ID&device_id=DEVICE_ID&device_id_kind=DEVICE_ID_KIND&access_key=&application_key=APPLICATION_KEY",
+      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID",
       :body => File.read("#{FIXTURES}/fake_responses/fetch_survey.json"),
       :status => ["200", "Success"]
     )
 
-    response = @client.fetch_survey(:survey_id => "SURVEY_ID", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND")
+    response = @client.fetch_survey(:account_id => "PUBLISHER_ACCOUNT_ID", :survey_id => "SURVEY_ID")
 
     assert_equal(4, response[:survey][:questions].length)
   end
 
-  def test_send_completion
+  def test_send_survey
     FakeWeb.register_uri(
       :post,
-      "http://daliaresearch.com/api/surveys/SURVEY_ID/completions",
-      :body => File.read("#{FIXTURES}/fake_responses/send_completion.json"),
-      :parameters => {:survey_id => "SURVEY_ID", :completion => "COMPLETION", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND"},
+      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/",
+      :body => File.read("#{FIXTURES}/fake_responses/send_survey.json"),
+      :parameters => { :data => "DATA" },
       :status => ["200", "Success"]
     )
 
-    response = @client.send_completion(:survey_id => "SURVEY_ID", :completion => "COMPLETION", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND")
+    response = @client.send_survey(:account_id => "PUBLISHER_ACCOUNT_ID", :data => "DATA")
 
-    assert_equal("10", response[:completion][:credits][:amount])
+    assert_equal("280", response[:survey][:credits][:amount])
+  end
+
+  def test_fetch_completions
+    FakeWeb.register_uri(
+      :get,
+      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID/completions",
+      :body => File.read("#{FIXTURES}/fake_responses/fetch_completions.json"),
+      :status => ["200", "Success"]
+    )
+
+    response = @client.fetch_completions(:account_id => "PUBLISHER_ACCOUNT_ID", :survey_id => "SURVEY_ID")
+
+    assert_equal(3, response[:completions].length)
+  end
+
+  def test_fetch_completion
+    FakeWeb.register_uri(
+      :get,
+      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID/completions/COMPLETION_ID",
+      :body => File.read("#{FIXTURES}/fake_responses/fetch_completion.json"),
+      :status => ["200", "Success"]
+    )
+
+    response = @client.fetch_completion(:account_id => "PUBLISHER_ACCOUNT_ID", :survey_id => "SURVEY_ID", :completion_id => "COMPLETION_ID")
+
     assert_equal("completed", response[:completion][:state])
-  end
-
-  def test_send_prequalification_success
-    FakeWeb.register_uri(
-      :post,
-      "http://daliaresearch.com/api/surveys/SURVEY_ID/prequalification_success",
-      :body => File.read("#{FIXTURES}/fake_responses/send_prequalification_success.json"),
-      :parameters => {:survey_id => "SURVEY_ID", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND"},
-      :status => ["200", "Success"]
-    )
-
-    response = @client.send_prequalification_success(:survey_id => "SURVEY_ID", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND")
-
-    assert_equal("prequalification_success", response[:completion][:state])
-  end
-
-  def test_send_prequalification_success
-    FakeWeb.register_uri(
-      :post,
-      "http://daliaresearch.com/api/surveys/SURVEY_ID/prequalification_fail",
-      :body => File.read("#{FIXTURES}/fake_responses/send_prequalification_fail.json"),
-      :parameters => {:survey_id => "SURVEY_ID", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND"},
-      :status => ["200", "Success"]
-    )
-
-    response = @client.send_prequalification_fail(:survey_id => "SURVEY_ID", :device_id => "DEVICE_ID", :device_id_kind => "DEVICE_ID_KIND")
-
-    assert_equal("prequalification_fail", response[:completion][:state])
   end
 end
