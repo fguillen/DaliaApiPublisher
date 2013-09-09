@@ -1,9 +1,0 @@
-{
-  "completion" : {
-    "survey_id": "XXX1",
-    "id": "XXX2",
-    "device_id": "DEVICE_ID",
-    "device_id_kind": "DEVICE_ID_KIND",
-    "state": "prequalification_fail"
-  }
-}
