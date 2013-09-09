@@ -1,0 +1,66 @@
+{
+  "devive_id": "XXX1",
+  "surveys": [
+    {
+      "id": "001",
+      "title": "The survey 001",
+      "tagline": "This is an explanation of the survey",
+      "prequalification": "This survey require you to be a sport man older than 40",
+      "kind": "mr_survey",
+      "credits": {
+        "kind": "stars",
+        "amount": "280"
+      }
+    },
+    {
+      "id": "002",
+      "title": "The survey 002",
+      "tagline": "Help us to find a better product",
+      "kind": "media_test",
+      "credits": {
+        "kind": "chocos",
+        "amount": "67"
+      }
+    },
+    {
+      "id": "003",
+      "title": "The survey 003",
+      "tagline": "MIT experiment collaboration",
+      "kind": "opinion",
+      "credits": {
+        "kind": "stars",
+        "amount": "12"
+      }
+    },
+    {
+      "id": "004",
+      "title": "The survey 004",
+      "tagline": "You never know what are you really thinking",
+      "kind": "aggregator",
+      "credits": {
+        "kind": "stars",
+        "amount": "100"
+      }
+    },
+    {
+      "id": "005",
+      "title": "The survey 005",
+      "tagline": "Consumer behavior when is drunk",
+      "kind": "aggregator",
+      "credits": {
+        "kind": "stars",
+        "amount": "55"
+      }
+    },
+    {
+      "id": "006",
+      "title": "The survey 006",
+      "tagline": "This is the tagline",
+      "kind": "opinion",
+      "credits": {
+        "kind": "chocos",
+        "amount": "250"
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "devive_id": "XXX1",
+  "survey": {
+    "id": "001",
+    "title": "The survey 001",
+    "tagline": "This is the tagline",
+    "kind": "mr_survey",
+    "credits": {
+      "kind": "stars",
+      "amount": "10"
+    },
+    "questions": [
+      {
+        "id": "Q32d04b",
+        "kind": "multiple",
+        "title": "Fill the question",
+        "body": {
+          "options": [
+            "New option 1",
+            "New option 2"
+          ]
+        }
+      },
+      {
+        "id": "Qc8e3a0",
+        "kind": "multiple_sole",
+        "title": "Fill the question",
+        "body": {
+          "options": [
+            "New option 1",
+            "New option 2"
+          ]
+        }
+      },
+      {
+        "id": "Qb006c2",
+        "kind": "range",
+        "title": "Fill the question",
+        "body": {
+          "min": "0",
+          "max": "100"
+        }
+      },
+      {
+        "id": "Qa01e47",
+        "kind": "page",
+        "body": {
+          "page": "This is the **presentation** page. \n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
+        }
+      }
+    ]
+  }
+}
