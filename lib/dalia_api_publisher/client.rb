@@ -51,15 +51,6 @@ class Dalia::Api::Publisher::Client
 
 private
 
-  def check_required_options(options_hash, required_options)
-    errors =
-      required_options.map do |required_option|
-        "#{required_option} required"       if !options_hash[:required_option]
-      end.join(", ")
-
-    raise Dalia::Api::Publisher::Exception, errors.join(", ") if !errors.empty?
-  end
-
   def make_request_fetch_surveys(query)
     make_request("/api/publishers/#{query.delete(:account_id)}/surveys", query)
   end
