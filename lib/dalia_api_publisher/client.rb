@@ -36,7 +36,7 @@ class Dalia::Api::Publisher::Client
   end
 
   def update_survey(opts)
-    check_required_options(opts, :account_id, :data)
+    check_required_options(opts, :account_id, :survey_id, :data)
     response = make_request_update_survey(opts)
 
     response
@@ -71,7 +71,7 @@ private
   end
 
   def make_request_update_survey(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/", query, :method => :put)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query, :method => :put)
   end
 
   def make_request_fetch_completions(query)
@@ -94,7 +94,7 @@ private
       case opts[:method]
       when :get then HTTParty.get(api_url, :query => query)
       when :post then HTTParty.post(api_url, :body => query)
-      when :put then HTTParty.post(api_url, :body => query)
+      when :put then HTTParty.put(api_url, :body => query)
       end
 
     log.log_response response

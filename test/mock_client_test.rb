@@ -25,6 +25,12 @@ class MockClientTest < MiniTest::Unit::TestCase
     assert_equal("280", response[:survey][:credits][:amount])
   end
 
+  def test_update_survey
+    response = @client.update_survey(:account_id => "PUBLISHER_ACCOUNT_ID_MOCK", :survey_id => "SURVEY_ID", :data => "DATA")
+
+    assert_equal("280", response[:survey][:credits][:amount])
+  end
+
   def test_fetch_completions
     response = @client.fetch_completions(:account_id => "PUBLISHER_ACCOUNT_ID_MOCK", :survey_id => "SURVEY_ID")
 
