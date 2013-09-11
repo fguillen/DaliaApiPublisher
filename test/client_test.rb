@@ -48,6 +48,20 @@ class ClientTest < MiniTest::Unit::TestCase
     assert_equal("280", response[:survey][:credits][:amount])
   end
 
+  def test_update_survey
+    FakeWeb.register_uri(
+      :put,
+      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/",
+      :body => File.read("#{FIXTURES}/fake_responses/send_survey.json"),
+      :parameters => { :data => "DATA" },
+      :status => ["200", "Success"]
+    )
+
+    response = @client.update_survey(:account_id => "PUBLISHER_ACCOUNT_ID", :data => "DATA")
+
+    assert_equal("280", response[:survey][:credits][:amount])
+  end
+
   def test_fetch_completions
     FakeWeb.register_uri(
       :get,

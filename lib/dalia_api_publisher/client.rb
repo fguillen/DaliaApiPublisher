@@ -35,6 +35,13 @@ class Dalia::Api::Publisher::Client
     response
   end
 
+  def update_survey(opts)
+    check_required_options(opts, :account_id, :data)
+    response = make_request_update_survey(opts)
+
+    response
+  end
+
   def fetch_completions(opts)
     check_required_options(opts, :account_id, :survey_id)
     response = make_request_fetch_completions(opts)
@@ -63,6 +70,10 @@ private
     make_request("/api/publishers/#{query.delete(:account_id)}/surveys/", query, :method => :post)
   end
 
+  def make_request_update_survey(query)
+    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/", query, :method => :put)
+  end
+
   def make_request_fetch_completions(query)
     make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions", query)
   end
@@ -80,17 +91,17 @@ private
     log.debug "api_query: #{query.inspect}"
 
     response =
-      if opts[:method] == :get
-        HTTParty.get(api_url, :query => query)
-      else
-        HTTParty.post(api_url, :body => query)
+      case opts[:method]
+      when :get then HTTParty.get(api_url, :query => query)
+      when :post then HTTParty.post(api_url, :body => query)
+      when :put then HTTParty.post(api_url, :body => query)
       end
 
     log.log_response response
 
     raise Dalia::Api::Publisher::Exception, response.message if response.code != 200
 
-    JSON.parse(response.body, :symbolize_names => true)
+    JSON.parse_sym(response.body)
   end
 
   def check_required_options(options_hash, *required_options)

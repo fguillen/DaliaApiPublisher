@@ -27,7 +27,7 @@ class Dalia::Api::Publisher::Log
     debug "Response:"
     debug "-----------"
     debug "response.request: #{response.request.last_uri}"
-    debug "response.body: #{JSON.pretty_generate(JSON.parse(response.body))}"
+    debug "response.body: #{JSON.pretty_generate(JSON.parse_sym(response.body))}"
     debug "response.code: #{response.code}"
     debug "response.message: #{response.message}"
   end
