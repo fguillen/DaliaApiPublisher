@@ -20,7 +20,7 @@ class MockClientTest < MiniTest::Unit::TestCase
   end
 
   def test_send_survey
-    response = @client.send_survey(:account_id => "PUBLISHER_ACCOUNT_ID_MOCK", :survey => "DATA")
+    response = @client.send_survey(:account_id => "PUBLISHER_ACCOUNT_ID_MOCK", :data => "DATA")
 
     assert_equal("280", response[:survey][:credits][:amount])
   end

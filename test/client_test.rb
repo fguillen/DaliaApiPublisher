@@ -39,11 +39,11 @@ class ClientTest < MiniTest::Unit::TestCase
       :post,
       "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/",
       :body => File.read("#{FIXTURES}/fake_responses/send_survey.json"),
-      :parameters => { :survey => "DATA" },
+      :parameters => { :data => "DATA" },
       :status => ["200", "Success"]
     )
 
-    response = @client.send_survey(:account_id => "PUBLISHER_ACCOUNT_ID", :survey => "DATA")
+    response = @client.send_survey(:account_id => "PUBLISHER_ACCOUNT_ID", :data => "DATA")
 
     assert_equal("280", response[:survey][:credits][:amount])
   end
