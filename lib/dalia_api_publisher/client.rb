@@ -29,7 +29,7 @@ class Dalia::Api::Publisher::Client
   end
 
   def send_survey(opts)
-    check_required_options(opts, :account_id, :data)
+    check_required_options(opts, :account_id, :survey)
     response = make_request_send_survey(opts)
 
     response

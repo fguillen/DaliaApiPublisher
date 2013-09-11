@@ -1,8 +1,7 @@
 class Dalia::Api::Publisher::MockClient < Dalia::Api::Publisher::Client
   def initialize(opts = {})
     opts = {
-      :application_key => "APPLICATION-KEY",
-      :secret_key => "SECRET-KEY",
+      :account_id => "ACCOUNT_ID"
     }.merge(opts)
 
     super(opts)
