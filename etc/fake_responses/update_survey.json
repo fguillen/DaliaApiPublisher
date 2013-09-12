@@ -8,6 +8,15 @@
     "credits": {
       "kind": "stars",
       "amount": "280"
-    }
+    },
+    "questions": [
+      {
+        "id": "Qa01e47",
+        "kind": "page",
+        "body": {
+          "page": "The page"
+        }
+      }
+    ]
   }
 }

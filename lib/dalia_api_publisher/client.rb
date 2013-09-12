@@ -59,27 +59,27 @@ class Dalia::Api::Publisher::Client
 private
 
   def make_request_fetch_surveys(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys", query)
+    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys", query)
   end
 
   def make_request_fetch_survey(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query)
+    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query)
   end
 
   def make_request_send_survey(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/", query, :method => :post)
+    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/", query, :method => :post)
   end
 
   def make_request_update_survey(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query, :method => :put)
+    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query, :method => :put)
   end
 
   def make_request_fetch_completions(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions", query)
+    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions", query)
   end
 
   def make_request_fetch_completion(query)
-    make_request("/api/publishers/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
+    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
   end
 
   def make_request(api_path, query, opts = {})
