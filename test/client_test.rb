@@ -11,7 +11,7 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_fetch_surveys
     FakeWeb.register_uri(
       :get,
-      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys",
+      "http://daliaresearch.com/api/publisher/publisher_users/PUBLISHER_ACCOUNT_ID/surveys",
       :body => File.read("#{FIXTURES}/fake_responses/fetch_surveys.json"),
       :status => ["200", "Success"]
     )
@@ -24,7 +24,7 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_fetch_survey
     FakeWeb.register_uri(
       :get,
-      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID",
+      "http://daliaresearch.com/api/publisher/publisher_users/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID",
       :body => File.read("#{FIXTURES}/fake_responses/fetch_survey.json"),
       :status => ["200", "Success"]
     )
@@ -37,7 +37,7 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_send_survey
     FakeWeb.register_uri(
       :post,
-      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/",
+      "http://daliaresearch.com/api/publisher/publisher_users/PUBLISHER_ACCOUNT_ID/surveys/",
       :body => File.read("#{FIXTURES}/fake_responses/send_survey.json"),
       :parameters => { :data => "DATA" },
       :status => ["200", "Success"]
@@ -51,7 +51,7 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_update_survey
     FakeWeb.register_uri(
       :put,
-      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID",
+      "http://daliaresearch.com/api/publisher/publisher_users/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID",
       :body => File.read("#{FIXTURES}/fake_responses/send_survey.json"),
       :parameters => { :survey_id => "SURVEY_ID", :data => "DATA" },
       :status => ["200", "Success"]
@@ -65,7 +65,7 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_fetch_completions
     FakeWeb.register_uri(
       :get,
-      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID/completions",
+      "http://daliaresearch.com/api/publisher/publisher_users/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID/completions",
       :body => File.read("#{FIXTURES}/fake_responses/fetch_completions.json"),
       :status => ["200", "Success"]
     )
@@ -78,7 +78,7 @@ class ClientTest < MiniTest::Unit::TestCase
   def test_fetch_completion
     FakeWeb.register_uri(
       :get,
-      "http://daliaresearch.com/api/publishers/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID/completions/COMPLETION_ID",
+      "http://daliaresearch.com/api/publisher/publisher_users/PUBLISHER_ACCOUNT_ID/surveys/SURVEY_ID/completions/COMPLETION_ID",
       :body => File.read("#{FIXTURES}/fake_responses/fetch_completion.json"),
       :status => ["200", "Success"]
     )
