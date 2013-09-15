@@ -12,23 +12,33 @@
     "questions": [
       {
         "id": "Q32d04b",
-        "kind": "multiple",
+        "kind": "multiple_sole",
         "title": "Fill the question",
         "body": {
           "options": [
-            "New option 1",
-            "New option 2"
+            {
+              "text": "New option 1",
+              "branch_to": "Qb006c2"
+            },
+            {
+              "text": "New option 2",
+              "branch_to": ""
+            }
           ]
         }
       },
       {
         "id": "Qc8e3a0",
-        "kind": "multiple_sole",
+        "kind": "multiple",
         "title": "Fill the question",
         "body": {
           "options": [
-            "New option 1",
-            "New option 2"
+            {
+              "text": "New option 1"
+            },
+            {
+              "text": "New option 2"
+            }
           ]
         }
       },
