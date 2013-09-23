@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'dalia_api_publisher/version'
+require 'dalia_api_researcher/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "dalia_api_publisher"
+  spec.name          = "dalia_api_researcher"
   spec.version       = Dalia::Api::Publisher::VERSION
   spec.authors       = ["Fernando Guillen"]
   spec.email         = ["fguillen.mail@gmail.com"]
