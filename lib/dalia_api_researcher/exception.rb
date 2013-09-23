@@ -1,2 +1,2 @@
-class Dalia::Api::Publisher::Exception < Exception
+class Dalia::Api::Researcher::Exception < Exception
 end

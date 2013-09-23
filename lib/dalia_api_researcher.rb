@@ -10,5 +10,5 @@ require_relative "dalia_api_researcher/exception"
 require_relative "dalia_api_researcher/client"
 require_relative "dalia_api_researcher/mock_client"
 
-module Dalia::Api::Publisher
+module Dalia::Api::Researcher
 end

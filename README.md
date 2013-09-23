@@ -1,2 +1,2 @@
-# Dalia::Api::Publisher
+# Dalia::Api::Researcher
 

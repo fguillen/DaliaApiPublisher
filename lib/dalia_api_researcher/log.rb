@@ -1,4 +1,4 @@
-class Dalia::Api::Publisher::Log
+class Dalia::Api::Researcher::Log
   attr_reader :debug_mode
 
   def initialize(debug_mode = true)
@@ -8,7 +8,7 @@ class Dalia::Api::Publisher::Log
   def debug(message)
     return unless debug_mode
 
-    result = "Dalia::Api::Publisher [#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}]: #{message}"
+    result = "Dalia::Api::Researcher [#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}]: #{message}"
 
     if defined? ::Rails
       ::Rails.logger.info result

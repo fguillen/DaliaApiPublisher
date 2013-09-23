@@ -1,6 +1,6 @@
 module Dalia
   module Api
-    module Publisher
+    module Researcher
       VERSION = "0.0.1"
     end
   end

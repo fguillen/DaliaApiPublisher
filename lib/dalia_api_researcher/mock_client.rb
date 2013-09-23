@@ -1,4 +1,4 @@
-class Dalia::Api::Publisher::MockClient < Dalia::Api::Publisher::Client
+class Dalia::Api::Researcher::MockClient < Dalia::Api::Researcher::Client
   def initialize(opts = {})
     opts = {
       :account_id => "ACCOUNT_ID"

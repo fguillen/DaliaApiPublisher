@@ -1,4 +1,4 @@
-class Dalia::Api::Publisher::Client
+class Dalia::Api::Researcher::Client
   attr_accessor :options
   attr_reader :log
   attr_reader :response
@@ -9,7 +9,7 @@ class Dalia::Api::Publisher::Client
       :api_host => "http://daliaresearch.com"
     }.merge!(opts)
 
-    @log = Dalia::Api::Publisher::Log.new(options[:debug_mode])
+    @log = Dalia::Api::Researcher::Log.new(options[:debug_mode])
 
     log.log_options(options)
   end
@@ -59,27 +59,27 @@ class Dalia::Api::Publisher::Client
 private
 
   def make_request_fetch_surveys(query)
-    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys", query)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys", query)
   end
 
   def make_request_fetch_survey(query)
-    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query)
   end
 
   def make_request_send_survey(query)
-    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/", query, :method => :post)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/", query, :method => :post)
   end
 
   def make_request_update_survey(query)
-    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query, :method => :put)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}", query, :method => :put)
   end
 
   def make_request_fetch_completions(query)
-    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions", query)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions", query)
   end
 
   def make_request_fetch_completion(query)
-    make_request("/api/publisher/publisher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
   end
 
   def make_request(api_path, query, opts = {})
@@ -99,7 +99,7 @@ private
 
     log.log_response response
 
-    raise Dalia::Api::Publisher::Exception, response.message if response.code != 200
+    raise Dalia::Api::Researcher::Exception, response.message if response.code != 200
 
     JSON.parse_sym(response.body)
   end
@@ -110,7 +110,7 @@ private
         "#{required_option} required" if !options_hash[required_option]
       end.compact.join(", ")
 
-    raise Dalia::Api::Publisher::Exception, errors if !errors.empty?
+    raise Dalia::Api::Researcher::Exception, errors if !errors.empty?
   end
 
 end

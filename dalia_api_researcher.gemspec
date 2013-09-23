@@ -5,12 +5,12 @@ require 'dalia_api_researcher/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "dalia_api_researcher"
-  spec.version       = Dalia::Api::Publisher::VERSION
+  spec.version       = Dalia::Api::Researcher::VERSION
   spec.authors       = ["Fernando Guillen"]
   spec.email         = ["fguillen.mail@gmail.com"]
   spec.description   = "Ruby wrapper for the Dalia's API"
   spec.summary       = "Ruby wrapper for the Dalia's API"
-  spec.homepage      = "https://github.com/DaliaResearch/DaliaApiPublisher"
+  spec.homepage      = "https://github.com/DaliaResearch/DaliaApiResearcher"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
