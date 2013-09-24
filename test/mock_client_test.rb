@@ -42,4 +42,10 @@ class MockClientTest < MiniTest::Unit::TestCase
 
     assert_equal("completed", response[:completion][:state])
   end
+
+  def test_create_query
+    response = @client.create_query(:account_id => "RESEARCHER_ACCOUNT_ID_MOCK", :survey_id => "SURVEY_ID", :question_id => "QUESTION_ID")
+
+    assert_equal("Qb5faf2", response[:question_id])
+  end
 end

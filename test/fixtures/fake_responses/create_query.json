@@ -1,0 +1,23 @@
+{
+  "question_id": "Qb5faf2",
+  "question_title": "What is your immediate reaction to the advertisement?",
+  "question_kind": "multiple_sole",
+  "values": [
+    {
+      "value": "Rather boring",
+      "frequency": 9
+    },
+    {
+      "value": "Don’t know",
+      "frequency": 6
+    },
+    {
+      "value": "Somewhat confusing",
+      "frequency": 8
+    },
+    {
+      "value": "I found it interesting",
+      "frequency": 11
+    }
+  ]
+}

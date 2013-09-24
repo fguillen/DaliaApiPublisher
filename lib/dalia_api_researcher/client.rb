@@ -56,6 +56,13 @@ class Dalia::Api::Researcher::Client
     response
   end
 
+  def create_query(opts)
+    check_required_options(opts, :account_id, :survey_id, :question_id)
+    response = make_request_create_query(opts)
+
+    response
+  end
+
 private
 
   def make_request_fetch_surveys(query)
@@ -80,6 +87,10 @@ private
 
   def make_request_fetch_completion(query)
     make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
+  end
+
+  def make_request_create_query(query)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/query", query)
   end
 
   def make_request(api_path, query, opts = {})

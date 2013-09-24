@@ -6,6 +6,12 @@
     "state": "completed",
     "prequalification_fail_at": null,
     "completed_at": "2013-10-01 10:11:12",
-    "answers": {}
+    "answers": [
+      {
+        "question_id": "Q1",
+        "question_title": "The question title",
+        "result": "The Result"
+      }
+    ]
   }
 }

@@ -87,4 +87,17 @@ class ClientTest < MiniTest::Unit::TestCase
 
     assert_equal("completed", response[:completion][:state])
   end
+
+  def test_create_query
+    FakeWeb.register_uri(
+      :get,
+      "http://daliaresearch.com/api/researcher/researcher_users/RESEARCHER_ACCOUNT_ID/surveys/SURVEY_ID/query?question_id=QUESTION_ID",
+      :body => File.read("#{FIXTURES}/fake_responses/create_query.json"),
+      :status => ["200", "Success"]
+    )
+
+    response = @client.create_query(:account_id => "RESEARCHER_ACCOUNT_ID", :survey_id => "SURVEY_ID", :question_id => "QUESTION_ID")
+
+    assert_equal("Qb5faf2", response[:question_id])
+  end
 end
