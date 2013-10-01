@@ -5,6 +5,7 @@
     "title": "The survey 001",
     "tagline": "This is the tagline",
     "kind": "mr_survey",
+    "published": false,
     "credits": {
       "kind": "stars",
       "amount": "10"

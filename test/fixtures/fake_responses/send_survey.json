@@ -5,9 +5,19 @@
     "tagline": "This is an explanation of the survey",
     "prequalification": "This survey require you to be a sport man older than 40",
     "kind": "mr_survey",
+    "published": false,
     "credits": {
       "kind": "stars",
       "amount": "280"
-    }
+    },
+    "questions": [
+      {
+        "id": "Qa01e47",
+        "kind": "page",
+        "body": {
+          "page": "The page"
+        }
+      }
+    ]
   }
 }
