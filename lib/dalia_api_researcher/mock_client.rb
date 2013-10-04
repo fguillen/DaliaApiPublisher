@@ -45,6 +45,12 @@ class Dalia::Api::Researcher::MockClient < Dalia::Api::Researcher::Client
     JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_completion.json"))
   end
 
+  def make_request_fetch_survey_price(query)
+    log.debug "make_request_fetch_survey_price FAKE"
+
+    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_survey_price.json"))
+  end
+
   def make_request_create_query(query)
     log.debug "make_request_create_query FAKE"
 

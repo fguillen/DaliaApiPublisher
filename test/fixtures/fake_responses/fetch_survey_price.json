@@ -1,0 +1,11 @@
+{
+  "price": {
+    "survey_questions": 3,
+    "survey_demographics": 2,
+    "price_by_question": 0.01,
+    "price_by_demographic": 0.02,
+    "total_price_by_questions": 0.03,
+    "total_price_by_demographics": 0.04,
+    "total": 0.07
+  }
+}

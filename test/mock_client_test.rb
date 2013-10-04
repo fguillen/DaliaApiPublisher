@@ -43,6 +43,12 @@ class MockClientTest < MiniTest::Unit::TestCase
     assert_equal("completed", response[:completion][:state])
   end
 
+  def test_fetch_survey_price
+    response = @client.fetch_survey_price(:account_id => "RESEARCHER_ACCOUNT_ID_MOCK")
+
+    assert_equal(0.07, response[:price][:total])
+  end
+
   def test_create_query
     response = @client.create_query(:account_id => "RESEARCHER_ACCOUNT_ID_MOCK", :survey_id => "SURVEY_ID", :question_id => "QUESTION_ID")
 

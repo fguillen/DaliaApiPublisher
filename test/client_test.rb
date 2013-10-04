@@ -88,6 +88,19 @@ class ClientTest < MiniTest::Unit::TestCase
     assert_equal("completed", response[:completion][:state])
   end
 
+  def test_fetch_survey_price
+    FakeWeb.register_uri(
+      :post,
+      "http://daliaresearch.com/api/researcher/researcher_users/RESEARCHER_ACCOUNT_ID/surveys/price",
+      :body => File.read("#{FIXTURES}/fake_responses/fetch_survey_price.json"),
+      :status => ["200", "Success"]
+    )
+
+    response = @client.fetch_survey_price(:account_id => "RESEARCHER_ACCOUNT_ID")
+
+    assert_equal(0.07, response[:price][:total])
+  end
+
   def test_create_query
     FakeWeb.register_uri(
       :get,

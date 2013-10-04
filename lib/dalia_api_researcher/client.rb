@@ -16,51 +16,42 @@ class Dalia::Api::Researcher::Client
 
   def fetch_surveys(opts)
     check_required_options(opts, :account_id)
-    response = make_request_fetch_surveys(opts)
-
-    response
+    make_request_fetch_surveys(opts)
   end
 
   def fetch_survey(opts)
     check_required_options(opts, :account_id, :survey_id)
-    response = make_request_fetch_survey(opts)
-
-    response
+    make_request_fetch_survey(opts)
   end
 
   def send_survey(opts)
     check_required_options(opts, :account_id, :data)
-    response = make_request_send_survey(opts)
-
-    response
+    make_request_send_survey(opts)
   end
 
   def update_survey(opts)
     check_required_options(opts, :account_id, :survey_id, :data)
-    response = make_request_update_survey(opts)
-
-    response
+    make_request_update_survey(opts)
   end
 
   def fetch_completions(opts)
     check_required_options(opts, :account_id, :survey_id)
-    response = make_request_fetch_completions(opts)
-
-    response
+    make_request_fetch_completions(opts)
   end
 
   def fetch_completion(opts)
     check_required_options(opts, :account_id, :survey_id, :completion_id)
-    response = make_request_fetch_completion(opts)
+    make_request_fetch_completion(opts)
+  end
 
-    response
+  def fetch_survey_price(opts)
+    check_required_options(opts, :account_id)
+    make_request_fetch_survey_price(opts)
   end
 
   def create_query(opts)
     check_required_options(opts, :account_id, :survey_id, :question_id)
-    response = make_request_create_query(opts)
-
-    response
+    make_request_create_query(opts)
   end
 
 private
@@ -87,6 +78,10 @@ private
 
   def make_request_fetch_completion(query)
     make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/#{query.delete(:survey_id)}/completions/#{query.delete(:completion_id)}", query)
+  end
+
+  def make_request_fetch_survey_price(query)
+    make_request("/api/researcher/researcher_users/#{query.delete(:account_id)}/surveys/price", query, :method => :post)
   end
 
   def make_request_create_query(query)
