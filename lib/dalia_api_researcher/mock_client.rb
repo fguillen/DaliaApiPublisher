@@ -11,49 +11,59 @@ class Dalia::Api::Researcher::MockClient < Dalia::Api::Researcher::Client
 
   def make_request_fetch_surveys(query)
     log.debug "make_request_fetch_surveys FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_surveys.json"))
+    response("fetch_surveys.json")
   end
 
   def make_request_fetch_survey(query)
     log.debug "make_request_fetch_survey FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_survey.json"))
+    response("fetch_survey.json")
   end
 
   def make_request_send_survey(query)
     log.debug "make_request_send_survey FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/send_survey.json"))
+    response("send_survey.json")
   end
 
   def make_request_update_survey(query)
     log.debug "make_request_update_survey FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/update_survey.json"))
+    response("update_survey.json")
   end
 
   def make_request_fetch_completions(query)
     log.debug "make_request_fetch_completions FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_completions.json"))
+    response("fetch_completions.json")
   end
 
   def make_request_fetch_completion(query)
     log.debug "make_request_fetch_completion FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_completion.json"))
+    response("fetch_completion.json")
   end
 
   def make_request_fetch_survey_price(query)
     log.debug "make_request_fetch_survey_price FAKE"
-
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/fetch_survey_price.json"))
+    response("fetch_survey_price.json")
   end
 
   def make_request_create_query(query)
     log.debug "make_request_create_query FAKE"
+    response("create_query.json")
+  end
 
-    JSON.parse_sym(File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/create_query.json"))
+private
+
+  def response(file_response)
+    response =
+      RecursiveOpenStruct.new(
+        :body => File.read("#{File.dirname(__FILE__)}/../../etc/fake_responses/#{file_response}"),
+        :code => 200,
+        :message => "<message>",
+        :request => {
+          :last_url => "<last_url>"
+        }
+      )
+
+    log.log_response response
+
+    JSON.parse_sym(response.body)
   end
 end

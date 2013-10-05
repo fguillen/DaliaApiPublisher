@@ -98,7 +98,7 @@ class ClientTest < MiniTest::Unit::TestCase
 
     response = @client.fetch_survey_price(:account_id => "RESEARCHER_ACCOUNT_ID")
 
-    assert_equal(0.07, response[:price][:total])
+    assert_equal(1.0, response[:price][:total])
   end
 
   def test_create_query

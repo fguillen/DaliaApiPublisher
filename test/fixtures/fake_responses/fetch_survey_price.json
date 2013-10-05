@@ -1,11 +1,115 @@
 {
+  "account_id": "RESEARCHER_ACCOUNT_ID",
+  "survey": {
+    "id": null,
+    "title": "Ad Test",
+    "tagline": "Check the video and describe your experience",
+    "prequalification": "",
+    "kind": "media_test",
+    "published": true,
+    "cap_completions": 10,
+    "demographics": [
+      {
+        "key": "gender",
+        "value": [
+          "male"
+        ]
+      }
+    ],
+    "credits": {
+      "kind": "stars",
+      "amount": "220.0"
+    },
+    "questions": [
+      {
+        "id": "Qa828f7",
+        "kind": "page",
+        "body": {
+          "page": "The following page displays an **advertisement** for few minutes. \n\nYou will be asked to answer questions on that advertisement later on."
+        }
+      },
+      {
+        "id": "Qbc8435",
+        "kind": "page",
+        "body": {
+          "page": "Please watch the video **until the end**\n\n<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/6tCtM8UEQv8\" frameborder=\"0\" allowfullscreen></iframe>"
+        }
+      },
+      {
+        "id": "Qb5faf2",
+        "kind": "multiple_sole",
+        "title": "What is your immediate reaction to the advertisement?",
+        "demographic_key": "gender",
+        "body": {
+          "options": [
+            {
+              "text": "I found it interesting",
+              "demographic_value": "male"
+            },
+            {
+              "text": "Somewhat confusing",
+              "demographic_value": "female"
+            },
+            {
+              "text": "Rather boring",
+              "demographic_value": "trans"
+            },
+            {
+              "text": "Don’t know",
+              "demographic_value": "other"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Q9df425",
+        "kind": "multiple_sole",
+        "title": "Which product does the advertisement try to sell?",
+        "body": {
+          "options": [
+            {
+              "text": "A movie"
+            },
+            {
+              "text": "A car"
+            },
+            {
+              "text": "A cheese"
+            },
+            {
+              "text": "Don’t know"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Qe776d4",
+        "kind": "multiple_sole",
+        "title": "Do you know the company that created this ad?",
+        "body": {
+          "options": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "Not sure"
+            },
+            {
+              "text": "No"
+            }
+          ]
+        }
+      }
+    ]
+  },
   "price": {
-    "survey_questions": 3,
-    "survey_demographics": 2,
-    "price_by_question": 0.01,
-    "price_by_demographic": 0.02,
-    "total_price_by_questions": 0.03,
-    "total_price_by_demographics": 0.04,
-    "total": 0.07
+    "survey_questions": 5,
+    "survey_demographics": 1,
+    "price_by_question": 0.1,
+    "price_by_demographic": 0.5,
+    "total_price_by_questions": 0.5,
+    "total_price_by_demographics": 0.5,
+    "total": 1.0,
+    "panel_users_count": 1
   }
 }
